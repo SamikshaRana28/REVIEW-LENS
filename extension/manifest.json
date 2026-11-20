@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "ReviewLens",
+  "version": "0.1",
+  "host_permissions": ["https://www.amazon.in/*", "http://127.0.0.1:8000/*"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{
+    "matches": ["https://www.amazon.in/*/dp/*", "https://www.amazon.in/dp/*"],
+  "js": ["content.js"],
+  "css": ["styles.css"]
+  }]
+}

@@ -1,0 +1,5 @@
+#reviewlens-card {
+  position: fixed; top: 80px; right: 16px; width: 300px; z-index: 99999;
+  background: #fff; color: #111; padding: 12px; border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.25); font: 13px/1.4 sans-serif;
+}
