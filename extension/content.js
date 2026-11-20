@@ -6,10 +6,18 @@ function getReviews() {
   const nodes = document.querySelectorAll(
     '[data-hook="review"], [data-hook="cmps-review"], [id^="customer_review"], .review'
   );
+  console.log("ReviewLens: review containers found:", nodes.length);
   nodes.forEach(el => {
-    const text = (el.querySelector('[data-hook="review-body"], .review-text-content')
-      ?.textContent || "").trim();
-    if (!text || text.length < 10 || seen.has(text)) return;
+    let text = (el.querySelector(
+      '[data-hook="review-body"], [data-hook="cmps-review-body"], .review-text-content, .review-text, [class*="review-text"]'
+    )?.textContent || "").trim();
+    // Fallback: body selector na mile to poore review block ka text lo
+    if (!text) {
+      text = (el.innerText || el.textContent || "").replace(/\s+/g, " ").trim();
+      if (text.length < 40) return;
+      console.log("ReviewLens: used fallback text for a review");
+    }
+    if (text.length < 10 || seen.has(text)) return;
     seen.add(text);
     const starText = el.querySelector('[data-hook*="review-star-rating"], .a-icon-alt')?.textContent || "";
     const rating = parseFloat(starText);

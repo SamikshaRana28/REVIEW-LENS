@@ -6,7 +6,6 @@
   "background": { "service_worker": "background.js" },
   "content_scripts": [{
     "matches": ["https://www.amazon.in/*/dp/*", "https://www.amazon.in/dp/*"],
-  "js": ["content.js"],
-  "css": ["styles.css"]
+  "js": ["content.js"]
   }]
 }
